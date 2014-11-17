@@ -25,26 +25,26 @@
     <script>
         $(function(event) {
         previous = function() {
-                if (currentSection.prev().size() != 0) {
-                  currentSection = currentSection.fadeOut().prev().fadeIn();
-                } else {
-                  currentSection.fadeOut();
-                  currentSection = $('sections').find('section').last().fadeIn();
-                }
-                return false;
-              };
+        if (currentSection.prev().size() != 0) {
+        currentSection = currentSection.fadeOut().prev().fadeIn();
+        } else {
+        currentSection.fadeOut();
+        currentSection = $('sections').find('section').last().fadeIn();
+        }
+        return false;
+        };
 
-              next = function() {
-                if (currentSection.next().size() != 0) {
-                currentSection = currentSection.fadeOut().next().fadeIn();
-              } else {
-                currentSection.fadeOut();
-                currentSection = $('sections').find('section').first().fadeIn();
-              }
-              };
+        next = function() {
+        if (currentSection.next().size() != 0) {
+        currentSection = currentSection.fadeOut().next().fadeIn();
+        } else {
+        currentSection.fadeOut();
+        currentSection = $('sections').find('section').first().fadeIn();
+        }
+        };
 
-            //hack right might mouse
-            document.oncontextmenu = previous;
+        //hack right might mouse
+        document.oncontextmenu = previous;
 
         var startAt = 0 //TODO: read from url?
         var currentSection = $('sections').find('section').eq(startAt).fadeIn();
@@ -58,24 +58,18 @@
         });
 
     </script>
-    <!-- On with the content... -->
-    <title>PMIP - Poor Man's IDE Plugin</title>
+    <title>??? - ???</title>
 </head>
 <body oncontextmenu="return false;">
 <img style="float:right; margin: 30px 30px;" src="img/logo.png"/>
 <sections>
-
-<section>
-    <t1>PMIP</t1>Poor Man's IDE Plugin<br/><t2>Paul Allton</t2>
-</section>
-
-<section>
-    <t1>one</t1>
-</section>
+    <section>
+        <t1>one</t1>
+    </section>
 
     <section>
-    <t1>two</t1>
-</section>
+        <t1>two</t1>
+    </section>
 
 </sections>
 </body>
