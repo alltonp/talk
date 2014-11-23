@@ -65,8 +65,9 @@
     <title>??? - ???</title>
 </head>
 <body oncontextmenu="return false;">
-<img style="float:right; margin: 30px 30px;" src="img/logo.png"/>
+<!--<img style="float:right; margin: 30px 30px;" src="img/logo.png"/>-->
 <sections>
+
     <section>
         <t1>one</t1>
         <ul>
@@ -78,25 +79,34 @@
 
     <section>
         <t1>check</t1>
+        <pre>   GET /check/foo/exists/@id</pre>
         <t2>Success</t2>
-        <pre>
-
-    {"failures":[]}
-        </pre>
+        <pre>   {"failures":[]}</pre>
 
         <t2>Failure</t2>
         <!-- need to add a better failure message -->
-        <pre>
-
-    {"failures":["foo failed"]}
-        </pre>
-
+        <pre>   {"failures":["foo failed"]}</pre>
     </section>
+
     <section>
         <t1>probate demo</t1>
         <!-- need a mainly green set, with a single flip flopper -->
         <iframe width="90%" height="80%" frameborder="0" src="http://localhost:8473/"></iframe>
     </section>
+
+    <section>
+        <t1>action</t1>
+        <pre>   POST /action/create/foo            {"in":[
+                                        {"name":"x", "value:":"y"}
+                                      ]}</pre>
+        <t2>Success</t2>
+        <pre>   {"failures":[], "returnValue": "12345"}  //optional</pre>
+
+        <t2>Failure</t2>
+        <!-- need to add a better failure message -->
+        <pre>   {"failures":["foo failed"]}</pre>
+    </section>
+
     <section>
         <t1>shoreditch demo</t1>
         <!-- need to make the text on this bigger -->
