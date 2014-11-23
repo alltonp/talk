@@ -71,21 +71,37 @@
     <section>
         <t1>problem #1</t1>
         <ul>
-            <li>supporting a suite of applications/services in production
-            <li>... in a bank
+            <li>how do you support a suite of applications/services in production in a bank?
+            <li>without touching it ...
         </ul>
         <!--
-            what makes banks special - no access to production box, no logins to the app
+            what makes banks unique? - no access to production box, no logins to the app
+            even though everything is fully TDD'd with rafts of acceptance tests, things still
+            go wrong when you put it all together
         -->
     </section>
 
+        <!--
+            need to segway into assertions somehow ....
+             could talk about bond ... RB
+        -->
+
     <section>
+        <!--
+            we've got a test for that, but tests only run as part of building/deploying the app
+        -->
         <t1>assert</t1>
-        <!-- invariants, first class citizens, why not expose them-->
+        <!--
+            asserts continue to disappoint me
+            invariants, first class citizens, why not expose them
+        -->
         <ul>
+            <li>failed
+            <li>not fulfilled their potential
             <li>why only in tests?
             <li>why hidden?
         </ul>
+        <!-- I want them running all the time -->
         <!-- we have already written them in our unit/acceptance tests -->
         <!-- why only executed at testing time? -->
         <!-- what if we could run them all the time -->
@@ -102,6 +118,24 @@
         <t2>Failure</t2>
         <!-- need to add a better failure message -->
         <pre>   {"failures":["foo failed"]}</pre>
+    </section>
+
+    <section>
+        <t1>example checks</t1>
+        <!--
+            keep them businessy
+        -->
+        <div style="float: left;">
+        <ul>
+            <li>good
+        <ul>
+        </div>
+        <div style="float: right;">
+        <ul>
+            <li>bad
+        <ul>
+        </div>
+
     </section>
 
     <section>
@@ -122,6 +156,12 @@
     </section>
 
     <section>
+        <t1>diagram</t1>
+    </section>
+
+    <!-- TODO: split the url and body into two pre chunks -->
+
+    <section>
         <t1>action</t1>
         <pre>   POST /action/create/foo            {"in":[
                                         {"name":"x", "value:":"y"}
@@ -135,10 +175,46 @@
     </section>
 
     <section>
+        <t1>example actions</t1>
+    </section>
+
+    <!--
+        bring it altogether
+        its just a case of assembling tests out of endpooints in a script
+        and running it against an environment
+    -->
+
+    <!-- TODO: colourise the id -->
+
+    <section>
+        <t1>example tests</t1>
+        <pre>   @id <= create trade in:x => notional:123
+   check trade booked in:y => @id
+   check trade cleared in:clearing => @id </pre>
+    </section>
+
+    <!-- need to explain what this maps to ... -->
+
+    <section>
         <t1>shoreditch demo</t1>
         <!-- need to make the text on this bigger -->
         <iframe width="90%" height="80%" frameborder="0" src="http://localhost:4253/"></iframe>
     </section>
+
+    <!--
+        may not get this far
+    -->
+
+    <section>
+        <t1>problem #3&4</t1>
+        <ul>
+            <li>... how do you know it's quick enough?
+            <li>... how do you know what your capacity is?
+            <li>... how do you x,y,z
+        </ul>
+    </section>
+
+    <!-- its all the same, with checks and actions, it's just a case of assembling tests out of endpooints ->
 
 </sections>
 </body>
