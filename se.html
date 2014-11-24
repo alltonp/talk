@@ -81,10 +81,25 @@
         -->
     </section>
 
+    <section>
+        <t1>what could go wrong?</t1>
+
         <!--
-            need to segway into assertions somehow ....
-             could talk about bond ... RB
+            business, no memory, disk space - there is already monitoring for that kind of thing
+            we are interested in application/business things
+
+            todays reports arrived and are valid
+            trades all processed
+            pricing engine is able to price
+            connections to external systems working (pings)
+
+            put the work check in front of each .. turn them into a url
+
+            what does it mean for each check .. we have tests for this already in each app ..
+            we dont want to repeat that, we just want to expose the assertions
+
         -->
+    </section>
 
     <section>
         <!--
@@ -139,6 +154,11 @@
     </section>
 
     <section>
+        <t1>bring it all together</t1>
+        <!-- checks in a list on repeat = monitoring -->
+    </section>
+
+    <section>
         <t1>probate demo</t1>
         <!-- need a mainly green set, with a single flip flopper -->
         <iframe width="90%" height="80%" frameborder="0" src="http://localhost:8473/"></iframe>
@@ -184,6 +204,11 @@
         and running it against an environment
     -->
 
+    <section>
+        <t1>bring it all together</t1>
+        <!-- checks, actions and an engine to run -->
+    </section>
+
     <!-- TODO: colourise the id -->
 
     <section>
@@ -206,12 +231,17 @@
     -->
 
     <section>
-        <t1>problem #3&4</t1>
+        <t1>problem #3,4,5 ...x</t1>
         <ul>
             <li>... how do you know it's quick enough?
             <li>... how do you know what your capacity is?
-            <li>... how do you x,y,z
+            <li>... how do you test long running workflows (i.e. days to execute, events T+x)?
+            <li>... how do you break up a monolithic app into microservices?
         </ul>
+    </section>
+
+    <section>
+        <t1>next  ....</t1>
     </section>
 
     <!-- its all the same, with checks and actions, it's just a case of assembling tests out of endpooints ->
