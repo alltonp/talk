@@ -6,7 +6,7 @@
      Paul Allton, paulallton@gmail.com -->
 
 <!-- TODO:
-   add mouse support back
+   add key support back
 -->
 
 <!-- TIP
@@ -77,32 +77,32 @@
         <!--
             what makes banks unique? - no access to production box, no logins to the app
             even though everything is fully TDD'd with rafts of acceptance tests, things still
-            go wrong when you put it all together
+            allowed to write the code, arent allowed to use it!
         -->
     </section>
 
     <section>
         <t1>what could go wrong?</t1>
 
-        <div style="float: left;">
+        <!--<div style="float: left;">-->
             <ul>
-            <li>good
-            <ul>
-        </div>
-        <div style="float: right;">
-            <ul dir="rtl">
-            <li>bad
-            <ul>
-        </div>
+            <li>technical vs businessy
+            </ul>
+
+            <p><t2>todays reports are valid</t2></p>
+            <p><t2>trades all processed</t2></p>
+            <p><t2>no trades have been rejected</t2></p>
+            <p><t2>pricing engine is able to price</t2></p>
+        <!--</div>-->
+        <!--<div style="float: right;">-->
+            <!--<ul dir="rtl">-->
+            <!--<li>bad-->
+            <!--<ul>-->
+        <!--</div>-->
         <!--
             business, no memory, disk space - there is already monitoring for that kind of thing
             we are interested in application/business things
 
-            todays reports arrived and are valid
-            trades all processed
-            no trades have been rejected
-            pricing engine is able to price
-            connections to external systems working (pings)
 
             put the work check in front of each .. turn them into a url
 
@@ -122,17 +122,18 @@
             invariants, first class citizens, why not expose them
         -->
         <ul>
-            <li>failed
             <li>not fulfilled their potential
             <li>why only in tests?
             <li>why hidden?
         </ul>
-        <!-- I want them running all the time -->
-        <!-- we have already written them in our unit/acceptance tests -->
-        <!-- why only executed at testing time? -->
-        <!-- what if we could run them all the time -->
-        <!-- why not make an api? -->
-        <!-- why not expose it via a restlike interface? -->
+        <!--
+            I want them running all the time, 1000's times per day
+            we have already written them in our unit/acceptance tests
+            why only executed at testing time?
+            what if we could run them all the time
+            why not make an api?
+            why not expose it via a restlike interface?
+        -->
     </section>
 
     <section>
@@ -148,12 +149,22 @@
 
     <section>
         <t1>bring it all together</t1>
+
         <!--
             checks in a list on repeat = monitoring
             take the original list and url-ify them
             then use those actual probes in the probate demo
             (and then again use the same ones in the actions)
         -->
+
+        <!-- TODO: maybe split these out -->
+        <pre>
+   check reports valid today <t2>=></t2>
+            http://reporting/check/reports/valid/@date
+
+   check all trades processed <t2>=></t2>
+            http://tradeservice/check/all/trades/processed
+        </pre>
 
     </section>
 
