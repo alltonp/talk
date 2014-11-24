@@ -71,8 +71,8 @@
     <section>
         <t1>problem #1</t1>
         <ul>
-            <li>how do you support a suite of applications/services in production in a bank?
-            <li>without touching it ...
+            <li>how do you support a suite of applications/services in production?
+            <li>constraint: without touching it ...
         </ul>
         <!--
             what makes banks unique? - no access to production box, no logins to the app
@@ -84,12 +84,23 @@
     <section>
         <t1>what could go wrong?</t1>
 
+        <div style="float: left;">
+            <ul>
+            <li>good
+            <ul>
+        </div>
+        <div style="float: right;">
+            <ul dir="rtl">
+            <li>bad
+            <ul>
+        </div>
         <!--
             business, no memory, disk space - there is already monitoring for that kind of thing
             we are interested in application/business things
 
             todays reports arrived and are valid
             trades all processed
+            no trades have been rejected
             pricing engine is able to price
             connections to external systems working (pings)
 
@@ -136,26 +147,14 @@
     </section>
 
     <section>
-        <t1>example checks</t1>
-        <!--
-            keep them businessy
-        -->
-        <div style="float: left;">
-        <ul>
-            <li>good
-        <ul>
-        </div>
-        <div style="float: right;">
-        <ul>
-            <li>bad
-        <ul>
-        </div>
-
-    </section>
-
-    <section>
         <t1>bring it all together</t1>
-        <!-- checks in a list on repeat = monitoring -->
+        <!--
+            checks in a list on repeat = monitoring
+            take the original list and url-ify them
+            then use those actual probes in the probate demo
+            (and then again use the same ones in the actions)
+        -->
+
     </section>
 
     <section>
@@ -183,9 +182,9 @@
 
     <section>
         <t1>action</t1>
-        <pre>   POST /action/create/foo            {"in":[
-                                        {"name":"x", "value:":"y"}
-                                      ]}</pre>
+        <pre>   POST /action/create/foo     =>       {"in":[
+                                          {"name":"x", "value:":"y"}
+                                        ]}</pre>
         <t2>Success</t2>
         <pre>   {"failures":[], "returnValue": "12345"}  //optional</pre>
 
