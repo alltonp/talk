@@ -176,10 +176,10 @@ hide footbox
     <section>
         <t1>a trading system</t1>
         <p><br/></p>
-        <p>check <t2>all trades processed</t2></p>
-        <p>check <t2>no trades rejected</t2></p>
-        <p>check <t2>pricing engine can price</t2></p>
-        <p>check <t2>todays reports valid</t2></p>
+        <p>assert <t2>all trades processed</t2></p>
+        <p>assert <t2>no trades rejected</t2></p>
+        <p>assert <t2>pricing engine can price</t2></p>
+        <p>assert <t2>todays reports valid</t2></p>
         <p><br/></p>
         <ul>
             <li>why not expose them ...</li>
@@ -189,10 +189,10 @@ hide footbox
     <section>
         <t1>a trading system</t1>
         <p><br/></p>
-        <p><t2>check/all/trades/processed</t2></p>
-        <p><t2>check/no/trades/rejected</t2></p>
-        <p><t2>check/pricing/engine/can/price</t2></p>
-        <p><t2>check/todays/reports/valid</t2></p>
+        <p><t2>assert/all/trades/processed</t2></p>
+        <p><t2>assert/no/trades/rejected</t2></p>
+        <p><t2>assert/pricing/engine/can/price</t2></p>
+        <p><t2>assert/todays/reports/valid</t2></p>
         <p><br/></p>
         <ul>
             <li>... in a REST-like (tm) interface</li>
@@ -200,26 +200,25 @@ hide footbox
 
     </section>
 
-    <!--
-    put the work check in front of each .. turn them into a url
-
-    what does it mean for each check .. we have tests for this already in each app ..
-    we dont want to repeat that, we just want to expose the assertions
-
-    -->
-
-
-
     <section>
-        <t1>check</t1>
-        <pre>   GET /check/foo/exists/@id</pre>
-        <t2>Success</t2>
-        <pre>   {"failures":[]}</pre>
+        <t1>check</t1> <!-- note that assert has changed to check, whatever -->
+        <pre>   GET /check/trade/exists/@id</pre>
 
+        <p><br/></p>
+        <t2>Success</t2>
+        <pre>   =>   {"failures":[]}</pre>
+
+        <p><br/></p>
         <t2>Failure</t2>
         <!-- need to add a better failure message -->
-        <pre>   {"failures":["foo failed"]}</pre>
+        <pre>   =>   {"failures":["trade 1234 does not exist"]}</pre>
     </section>
+
+    <!-- .. have got to here ... use the list from earlier -->
+
+
+
+    
 
     <section>
         <t1>bring it all together</t1>
