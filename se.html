@@ -9,8 +9,46 @@
    add key support back
 -->
 
-<!-- TIP
+<!-- TIP:
     http://htmlpreview.github.io/?https://raw.githubusercontent.com/alltonp/talk/master/se.html
+-->
+
+<!-- The plan:
+- Check
+- Action
+- Where's my trade?
+
+Mention shoreditch
+-->
+
+<!-- D1
+@startuml
+
+skinparam sequence {
+	ArrowColor #428bca
+	LifeLineBorderColor #999999
+
+	ParticipantFontColor #428bca
+        ParticipantFontStyle bold
+	ParticipantBorderColor #000000
+	ParticipantBackgroundColor #FFFFFF
+}
+
+participant app1
+participant app2
+participant app3
+participant app4
+participant app5
+
+app1<->app5: super wide
+|||
+app2<->app4: wide
+|||
+app3<->app4: narrow
+
+hide footbox
+
+@enduml
 -->
 
 <!DOCTYPE HTML>
@@ -85,19 +123,19 @@
         <t1>what could go wrong?</t1>
 
         <!--<div style="float: left;">-->
-            <ul>
+        <ul>
             <li>technical vs businessy
-            </ul>
+        </ul>
 
-            <p><t2>todays reports are valid</t2></p>
-            <p><t2>trades all processed</t2></p>
-            <p><t2>no trades have been rejected</t2></p>
-            <p><t2>pricing engine is able to price</t2></p>
+        <p><t2>todays reports are valid</t2></p>
+        <p><t2>trades all processed</t2></p>
+        <p><t2>no trades have been rejected</t2></p>
+        <p><t2>pricing engine is able to price</t2></p>
         <!--</div>-->
         <!--<div style="float: right;">-->
-            <!--<ul dir="rtl">-->
-            <!--<li>bad-->
-            <!--<ul>-->
+        <!--<ul dir="rtl">-->
+        <!--<li>bad-->
+        <!--<ul>-->
         <!--</div>-->
         <!--
             business, no memory, disk space - there is already monitoring for that kind of thing
@@ -187,6 +225,7 @@
 
     <section>
         <t1>diagram</t1>
+        <img src="http://www.plantuml.com:80/plantuml/png/NP312i8m38RForC4F0iw9wY8e88d3u9Fq6rHYxEfMOUAyzrrSoZjVylt_KcXvLaRgqHTiAHhHIOZV4Aq5E7RcWiMx2Nn9CqKH5jzeAqsj6B9IJevRGCGxPGudMchZDkmSVukTWbAU_Se25CkSc_VUs3GnlSgEn-5AvDtdKqRU07OVmkLjSCGn24OXI09mHYWkJJlBvfXXcLbIV2cSuAwhXiNVrqoy-ZeHurgVXFWzB5uO7Oft-4D"/>
     </section>
 
     <!-- TODO: split the url and body into two pre chunks -->
@@ -239,6 +278,10 @@
     <!--
         may not get this far
     -->
+
+    <section>
+        <t1>wheres my trade?</t1>
+    </section>
 
     <section>
         <t1>problem #3,4,5 ...x</t1>
