@@ -202,23 +202,27 @@ hide footbox
 
     <section>
         <t1>check</t1> <!-- note that assert has changed to check, whatever -->
-        <pre>   GET /check/trade/exists/@id</pre>
+        <pre>   GET /check/trades/rejected/@count
+   GET /check/trades/rejected/0</pre>
 
-        <p><br/></p>
+        <br/>
         <t2>Success</t2>
-        <pre>   =>   {"failures":[]}</pre>
+        <pre>   =>   {"failures":[]}</pre> <!-- the empty list -->
 
-        <p><br/></p>
+        <br/>
         <t2>Failure</t2>
         <!-- need to add a better failure message -->
-        <pre>   =>   {"failures":["trade 1234 does not exist"]}</pre>
+        <pre>   =>   {"failures":[
+           "1 trade rejected",
+           "trade 1234 is rejected"
+        ]}</pre>
     </section>
 
     <!-- .. have got to here ... use the list from earlier -->
 
 
 
-    
+
 
     <section>
         <t1>bring it all together</t1>
