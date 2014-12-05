@@ -23,13 +23,14 @@ Mention shoreditch
 
 <!-- D1
 @startuml
-
 skinparam sequence {
 	ArrowColor #428bca
+        ArrowFontSize 30
 	LifeLineBorderColor #999999
 
 	ParticipantFontColor #428bca
         ParticipantFontStyle bold
+        ParticipantFontSize 35
 	ParticipantBorderColor #000000
 	ParticipantBackgroundColor #FFFFFF
 }
@@ -40,17 +41,17 @@ participant pricing
 participant clearing
 participant reporting
 
+booking<->booking: acceptance
+|||
+trading<->pricing: integration
+|||
+trading<->clearing: wide integration
+|||
+booking<->reporting: full end-to-end, T+1
 
-booking<->reporting: full e2e, T+1
-|||
-trading<->clearing: wide
-|||
-trading<->pricing: narrow
 
 hide footbox
-
-@enduml
--->
+@enduml-->
 
 <!-- probate
 http://localhost:8473,/demo/failure,PROD,Unable To Price Trade,,Email Support,3
@@ -244,7 +245,7 @@ http://localhost:8473,/demo/success,PROD,Today's Trade Report Invalid,,Email Sup
     <section>
         <t1>continuous checking</t1>
         <!-- thousands of times per day -->
-
+        <br/>
         <iframe width="90%" height="80%" frameborder="0" src="http://localhost:8473/"></iframe>
 
         <ul>
@@ -258,7 +259,7 @@ http://localhost:8473,/demo/success,PROD,Today's Trade Report Invalid,,Email Sup
         <br/>
         <p>@id = 12345</t2></p>
         <p><t2>http://pricing/check/trade/priced/</t2>@id</p>
-        <p><t2>http://trading/check/trade/not/rejected/</t2>@id</p>
+        <p><t2>http://trading/check/trade/accepted/</t2>@id</p>
         <p><t2>http://clearing/check/trade/cleared/</t2>@id</p>
         <p><t2>http://reporting/check/reports/include/</t2>@id</t2></p>
         <p><br/></p>
@@ -272,46 +273,57 @@ http://localhost:8473,/demo/success,PROD,Today's Trade Report Invalid,,Email Sup
 
         <t1>how do you know it all hangs together?</t1>
         <br/>
-        <img src="http://www.plantuml.com:80/plantuml/png/NP31IWGn38RFawS8U5H15mywYA32dlOWw0jasinksThKR8TL7D_TEbIb_K_jbpz_qXxsBaHIUiK3lqqS3ECdTFUgSdmKBuedLwlhmH1q6pVonWL-4BMifNYp2A1x8atEk4WXhIMakXUB6jDp-l2CWtXRzLS3BXRLTJBxhSeKRF6i5y4NGFntvLp9RzjMB2dPbaNDfuOPpwGjL8wIRva2bF3Ryxi_skCuUO-yuZDyERs4UPwXpCkstyGUZyvoKomhz1Zev-C1Tjc3eqWQv1s-0G00"/>
-    </section>
+        <br/>
+        <img src="http://www.plantuml.com:80/plantuml/png/TL3BJiCm43ndls8bZX2fl2I84591wga7fF83Zhq9LbslsJegZ_3lk96XIYXpyUxix8orsxNrGOdQu9PUE_AQy1EAkGZl7jcnuCdLnKsj5M36C5gmZolxGNWvWs9f6rfQJmyiXYHltGu0A9wKHAjjK3xkjuwRJaIh-Eu8QtRcNyKGVZso7-NF1epdIgzRuSwRh5aCW2-0S52bM4utQKTS56McN91KJJZjICcK50gSkiH2zhuhxtDLeTAQGbJfyD3tFUIafCZ-5LeVgHKLBVk9v2Ukmfqrz4TuIFlzGeLDvnoIDsNaCZrd-7nw3W0lUuE6ETRyzWq0"/>
 
-    <!-- TODO: split the url and body into two pre chunks -->
+        <ul>
+            <li>... what if we could change state ...</li> <!-- using similar style -->
+        </ul>
+    </section>
 
     <section>
         <t1>action</t1>
-        <pre>   POST /action/create/foo    =>    {"in":[
-                                      {"name":"x", "value:":"y"}
-                                    ]}</pre>
-        <t2>Success</t2>
-        <pre>   {"failures":[], "returnValue": "12345"}  //optional</pre>
+        <pre>   POST /action/create/trade
 
+        {"in":[
+          {"name":"notional", "value:":"100m"}
+        ]}</pre>
+        <br/>
+        <t2>Success</t2>
+        <pre>   =>   {"failures":[], "returnValue": "12345"}  //optional</pre>
+
+        <br/>
         <t2>Failure</t2>
         <!-- need to add a better failure message -->
-        <pre>   {"failures":["foo failed"]}</pre>
+        <pre>   =>   {"failures":["trade creation failed"]}</pre>
     </section>
-
-    <section>
-        <t1>example actions</t1>
-    </section>
-
-    <!--
-        bring it altogether
-        its just a case of assembling tests out of endpooints in a script
-        and running it against an environment
-    -->
 
     <section>
         <t1>bring it all together</t1>
-        <!-- checks, actions and an engine to run -->
+
+        <t2><p>checks + actions</p><p>+ runner </p>= test anything</t2>
+        <!--
+            bring it altogether
+            its just a case of assembling tests out of endpooints in a script
+            and running it against an environment
+
+            shoreditch
+        -->
+
     </section>
 
     <!-- TODO: colourise the id -->
 
     <section>
-        <t1>example tests</t1>
-        <pre>   @id <= create trade in:x => notional:123
-   check trade booked in:y => @id
-   check trade cleared in:clearing => @id </pre>
+        <t1>a new trade must be</t1>
+        <br/>
+        <t2>priced, accepted and cleared</t2>
+        <br/>
+        <br/>
+        <pre>   <b>@id</b> <= create trade in:booking => notional:100m
+   check trade <b>priced</b> in:pricing => <b>@id</b>
+   check trade <b>accepted</b> in:prtading => <b>@id</b>
+   check trade <b>cleared</b> in:clearing => <b>@id</b></pre>
     </section>
 
     <!-- need to explain what this maps to ... -->
@@ -322,26 +334,15 @@ http://localhost:8473,/demo/success,PROD,Today's Trade Report Invalid,,Email Sup
         <iframe width="90%" height="80%" frameborder="0" src="http://localhost:4253/"></iframe>
     </section>
 
-    <!--
-        may not get this far
-    -->
-
     <section>
-        <t1>wheres my trade?</t1>
-    </section>
-
-    <section>
-        <t1>problem #3,4,5 ...x</t1>
+        <t1>next</t1>
         <ul>
-            <li>... how do you know it's quick enough?
-            <li>... how do you know what your capacity is?
-            <li>... how do you test long running workflows (i.e. days to execute, events T+x)?
-            <li>... how do you break up a monolithic app into microservices?
+            <li>how do you know it's quick enough?
+            <li>how do you know what your capacity is?
+            <li>how do you test long running workflows (i.e. days to execute, events T+x)?
+            <li>how do you break up a monolithic app into microservices?
         </ul>
-    </section>
-
-    <section>
-        <t1>next  ....</t1>
+        <!-- with just two primitived, check and action you can answer all of the above -->
     </section>
 
     <!-- its all the same, with checks and actions, it's just a case of assembling tests out of endpooints -->
