@@ -110,8 +110,8 @@ hide footbox
         <t1>keeping it up</t1>
         <t2>without touching it</t2>
         <ul>
-            <li>security clearance</li> <!-- as CAS alluded - in the dark, write only access -->
-            <li>classes of problem</li> <!-- to protect against -->
+            <li>write-only security clearance</li> <!-- as CAS alluded - in the dark, write only access -->
+            <li>business vs technical</li> <!-- to protect against classes of problem-->
             <!-- business not technical -->
             <!-- not disk, memory etc - that's already monitored -->
             <!-- so what are we interested in? business problems .... -->
@@ -120,21 +120,21 @@ hide footbox
 
     <section>
         <t1>a trading system</t1>
-        <p><br/></p>
-        <p><t2>all trades processed</t2></p>
+        <br/>
+        <p><t2>can price trade</t2></p>
         <p><t2>no trades rejected</t2></p>
-        <p><t2>pricing engine can price</t2></p>
-        <p><t2>todays reports valid</t2></p>
+        <p><t2>all trades cleared</t2></p>
+        <p><t2>reports valid today</t2></p>
         <p><br/></p>
     </section>
 
     <section>
         <t1>a trading system</t1>
-        <p><br/></p>
-        <p><t2>all trades processed</t2></p>
+        <br/>
+        <p><t2>can price trade</t2></p>
         <p><t2>no trades rejected</t2></p>
-        <p><t2>pricing engine can price</t2></p>
-        <p><t2>todays reports valid</t2></p>
+        <p><t2>all trades cleared</t2></p>
+        <p><t2>reports valid today</t2></p>
         <p><br/></p>
 
         <ul>
@@ -175,24 +175,24 @@ hide footbox
 
     <section>
         <t1>a trading system</t1>
-        <p><br/></p>
-        <p>assert <t2>all trades processed</t2></p>
+        <br/>
+        <p>assert <t2>can price trade</t2></p>
         <p>assert <t2>no trades rejected</t2></p>
-        <p>assert <t2>pricing engine can price</t2></p>
-        <p>assert <t2>todays reports valid</t2></p>
+        <p>assert <t2>all trades cleared</t2></p>
+        <p>assert <t2>reports valid today</t2></p>
         <p><br/></p>
         <ul>
-            <li>why not expose them ...</li>
+            <li>why not expose them ...</li> <!-- make them 1st class citizens, in the production code -->
         </ul>
     </section>
 
     <section>
         <t1>a trading system</t1>
-        <p><br/></p>
-        <p><t2>assert/all/trades/processed</t2></p>
+        <br/>
+        <p><t2>assert/can/price/trade</t2></p>
         <p><t2>assert/no/trades/rejected</t2></p>
-        <p><t2>assert/pricing/engine/can/price</t2></p>
-        <p><t2>assert/todays/reports/valid</t2></p>
+        <p><t2>assert/all/trades/cleared</t2></p>
+        <p><t2>assert/reports/valid/today</t2></p>
         <p><br/></p>
         <ul>
             <li>... in a REST-like (tm) interface</li>
@@ -213,36 +213,24 @@ hide footbox
         <t2>Failure</t2>
         <!-- need to add a better failure message -->
         <pre>   =>   {"failures":[
-           "1 trade rejected",
-           "trade 1234 is rejected"
+           "2 trades rejected",
+           "trade 1234 is rejected",
+           "trade 5678 is rejected"
         ]}</pre>
     </section>
 
-    <!-- .. have got to here ... use the list from earlier -->
-
-
-
-
-
     <section>
-        <t1>bring it all together</t1>
+        <t1>a trading system</t1>
+        <br/>
+        <p>http://pricing/<t2>check/can/price/trade</t2></p>
+        <p>http://trading/<t2>check/no/trades/rejected</t2></p>
+        <p>http://clearing/<t2>check/all/trades/cleared</t2></p>
+        <p>http://reporting/<t2>check/reports/valid/today</t2></p>
+        <p><br/></p>
 
-        <!--
-            checks in a list on repeat = monitoring
-            take the original list and url-ify them
-            then use those actual probes in the probate demo
-            (and then again use the same ones in the actions)
-        -->
-
-        <!-- TODO: maybe split these out -->
-        <pre>
-   check reports valid today <t2>=></t2>
-            http://reporting/check/reports/valid/@date
-
-   check all trades processed <t2>=></t2>
-            http://tradeservice/check/all/trades/processed
-        </pre>
-
+        <ul>
+            <li>... now we just need to run them</li>
+        </ul>
     </section>
 
     <section>
