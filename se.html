@@ -126,47 +126,60 @@ BOS,clearing,uat,http://localhost:4253/clearing
         });
 
     </script>
-    <title>??? - ???</title>
+    <title>Shoreditch - Paul Allton</title>
 </head>
 <body oncontextmenu="return false;">
 <!--<img style="float:right; margin: 30px 30px;" src="img/logo.png"/>-->
 <sections>
 
 <section>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <t1>Shoreditch</t1>
+    <t2>Paul Allton</t2>
+    <br/>
+    <br/>
+    <br/>
+    <p>solving three problems<p>
+    <p>using two concepts and a little scala/json<p>
+</section>
+
+<section>
     <t1>Is prod working?</t1>
     <ul>
-        <li>keeping it up, without touching it</li> <!-- as CAS alluded - in the dark, write only access -->
-        <li>write-only security clearance</li> <!-- as CAS alluded - in the dark, write only access -->
-        <li>business vs technical</li> <!-- to protect against classes of problem-->
-        <!-- business not technical -->
+        <li>aka keeping it up, without touching it</li>
+        <!-- <li>write-only security clearance</li> --> <!-- as CAS alluded - in the dark, write only access -->
+        <!-- to protect against classes of problem-->
+        <li>business vs technical</li>
         <!-- not disk, memory etc - that's already monitored -->
         <!-- so what are we interested in? business problems .... -->
     </ul>
-
-    <!-- solve three things with 2 concepts -->
 </section>
 
 <section>
     <t1>A trading system</t1>
+    <t2>invariants</t2>
+    <br/>
+    <p>can price trade</p>
+    <p>no trades rejected</p>
+    <p>all trades cleared</p>
+    <p>reports valid today</p>
+</section>
+
+<section>
+    <t1>A trading system</t1>
+    <t2>invariants</t2>
     <br/>
     <p><t2>can price trade</t2></p>
     <p><t2>no trades rejected</t2></p>
     <p><t2>all trades cleared</t2></p>
     <p><t2>reports valid today</t2></p>
-    <p><br/></p>
-</section>
-
-<section>
-    <t1>A trading system</t1>
     <br/>
-    <p><t2>can price trade</t2></p>
-    <p><t2>no trades rejected</t2></p>
-    <p><t2>all trades cleared</t2></p>
-    <p><t2>reports valid today</t2></p>
-    <p><br/></p>
 
     <ul>
-        <li>already tested???</li>
+        <li>alarm bell - already tested???</li>
         <!-- invariants of the system -->
         <!-- obviously every project has extensive suite of acceptance tests -->
         <!-- what does it mean 'all trades processed' -->
@@ -180,16 +193,16 @@ BOS,clearing,uat,http://localhost:4253/clearing
     <!--
         we've got a test for that, but tests only run as part of building/deploying the app
     -->
-    <t1>Asserts are underused</t1>
+    <t1>Assertions are second class citizens</t1>
     <!-- okay, thats strong, they don't suck but they haven't fulfilled their potential
         we go to all the effort to write tests, documenting the system invariants and then throw them away
         invariants, first class citizens, why not expose them
     -->
     <ul>
-        <li>why only in tests?
-        <li>why only run during dev and CI?
-        <li>why hidden? <!-- are we ashamed of them? -->
-        <li>why not all the time?
+        <li>why only in used tests?
+        <li>why only executed during dev and CI?
+        <li>why not put them in production code? <!-- are we ashamed of them? -->
+        <li>why not run them all the time?
     </ul>
     <!--
         I want them running all the time, 1000's times per day
@@ -203,6 +216,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
 
 <section>
     <t1>A trading system</t1>
+    <t2>invariants</t2>
     <br/>
     <p>assert <t2>can price trade</t2></p>
     <p>assert <t2>no trades rejected</t2></p>
@@ -216,20 +230,20 @@ BOS,clearing,uat,http://localhost:4253/clearing
 
 <section>
     <t1>A trading system</t1>
+    <t2>invariants</t2>
     <br/>
-    <p><t2>assert/can/price/trade</t2></p>
-    <p><t2>assert/no/trades/rejected</t2></p>
-    <p><t2>assert/all/trades/cleared</t2></p>
-    <p><t2>assert/reports/valid/today</t2></p>
+    <p><t2>assert</t2>/<t2>can</t2>/<t2>price</t2>/<t2>trade</t2></p>
+    <p><t2>assert</t2>/<t2>no</t2>/<t2>trades</t2>/<t2>rejected</t2></p>
+    <p><t2>assert</t2>/<t2>all</t2>/<t2>trades</t2>/<t2>cleared</t2></p>
+    <p><t2>assert</t2>/<t2>reports</t2>/<t2>valid</t2>/<t2>today</t2></p>
     <p><br/></p>
     <ul>
-        <li>... in a REST-like (tm) interface</li>
+        <li>... via a REST-like (tm) interface</li>
     </ul>
-
 </section>
 
 <section>
-    <t1>#1 - the check</t1> <!-- note that assert has changed to check, whatever -->
+    <t1>concept #1 - the check</t1> <!-- note that assert has changed to check, whatever -->
         <pre>   GET /check/trades/rejected/@count
    GET /check/trades/rejected/0</pre>
 
@@ -249,6 +263,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
 
 <section>
     <t1>A trading system</t1>
+    <t2>invariants</t2>
     <br/>
     <p>http://pricing/<t2>check/can/price/trade</t2></p>
     <p>http://trading/<t2>check/no/trades/rejected</t2></p>
@@ -262,7 +277,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
 </section>
 
 <section>
-    <t1>Continuous checking</t1>
+    <t1>Continuous checking - reprobate</t1>
     <!-- thousands of times per day -->
     <br/>
     <iframe width="90%" height="80%" frameborder="0" src="http://localhost:8473/"></iframe>
@@ -315,7 +330,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
 </section>
 
 <section>
-    <t1>#2 - the action</t1>
+    <t1>concept #2 - the action</t1>
         <pre>   POST /action/create/trade
 
         {"in":[
@@ -334,7 +349,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
 <section>
     <t1>Bringing it all together</t1>
 
-    <t2><p>checks + actions</p><p>+ script + runner </p>= test anything</t2>
+    <t2><p>primitives (checks + actions)</p><p>+ script + runner </p>= test anything</t2>
     <!--
         bring it altogether
         its just a case of assembling tests out of endpoints in a script
@@ -391,6 +406,12 @@ BOS,clearing,uat,http://localhost:4253/clearing
         <li>how do you generate test evidence for everything?
     </ul>
     <!-- with just two primitives, check and action you can answer all of the above -->
+</section>
+
+<section>
+    <t1>thats it!</t1>
+    <br/>
+    <t2>over to Franck ...</t2>
 </section>
 
 <!-- its all the same, with checks and actions, it's just a case of assembling tests out of endpooints -->
