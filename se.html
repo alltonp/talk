@@ -135,14 +135,14 @@ BOS,clearing,uat,http://localhost:4253/clearing
 <section>
     <t1>Is prod working?</t1>
     <ul>
-        <li>write-only security clearance</li> <!-- as CAS alluded - in the dark, write only access -->
         <li>keeping it up, without touching it</li> <!-- as CAS alluded - in the dark, write only access -->
+        <li>write-only security clearance</li> <!-- as CAS alluded - in the dark, write only access -->
         <li>business vs technical</li> <!-- to protect against classes of problem-->
         <!-- business not technical -->
         <!-- not disk, memory etc - that's already monitored -->
         <!-- so what are we interested in? business problems .... -->
     </ul>
-    
+
     <!-- solve three things with 2 concepts -->
 </section>
 
@@ -180,7 +180,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
     <!--
         we've got a test for that, but tests only run as part of building/deploying the app
     -->
-    <t1>Asserts suck</t1>
+    <t1>Asserts are underused</t1>
     <!-- okay, thats strong, they don't suck but they haven't fulfilled their potential
         we go to all the effort to write tests, documenting the system invariants and then throw them away
         invariants, first class citizens, why not expose them
@@ -274,7 +274,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
 </section>
 
 <section>
-    <t1>Where's my $#!*ing trade?</t1>
+    <t1>Where's my $#!*ing trade?</t1> <!-- flipping -->
     <br/>
     <p>@id = 12345</t2></p>
     <p><t2>http://booking/check/trade/booked/</t2>@id</p>
@@ -286,11 +286,13 @@ BOS,clearing,uat,http://localhost:4253/clearing
 </section>
 
 <section>
-    <t1>Microservices</t1>
+    <t1>Microservices microservices microservices</t1>
     <br/>
     <ul>
         <li>I don't want a faster scala compiler</li> <!-- it keeps you honest, it's a good alarm bell -->
         <li>clean compile > 1 min rule</li> <!-- codebase is too big -->
+        <li>small codes bases are good</li> <!-- compile quickly, easy to replace/remove -->
+        <li>... but</li>
     </ul>
 </section>
 
