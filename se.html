@@ -347,19 +347,46 @@ case class CheckResponse(
 
 <section>
     <t1>concept #2 - the action</t1>
-        <pre>   POST /action/create/trade
+    <div style="width: 50%; float: left;">
+    <pre>
+POST /action/create/trade
 
-        {"in":[
-          {"name":"notional", "value:":"100m"}
-        ]}</pre>
+{"in":[
+  {"name":"notional", "value:":"100m"}
+]}</pre>
     <br/>
     <t2>Success</t2>
-    <pre>   =>   {"failures":[], "returnValue": "12345"}  //optional</pre>
+    <pre>
+=>  {"failures":[], "returnValue": "12345"}
+     //optional</pre>
 
     <br/>
     <t2>Failure</t2>
-    <!-- need to add a better failure message -->
-    <pre>   =>   {"failures":["trade creation failed"]}</pre>
+    <pre>
+=>  {"failures":["trade creation failed"]}</pre>
+    </div>
+    <div style="width: 50%; float: right;">
+    <pre>
+trait Action {
+  def run(in: List[In]): ActionResponse
+
+  def success(returnValue: Option[String]) =
+    ActionResponse(Nil, returnValue)
+
+  def failure(failures: List[String]) =
+    ActionResponse(failures, None)
+}
+
+case class ActionResponse(
+  failures: List[String],
+  returnValue: Option[String])
+
+case class In(name: String,
+  value: Option[String],
+  validValues: List[String] = Nil)
+    </pre>
+
+    </div>
 </section>
 
 <section>
