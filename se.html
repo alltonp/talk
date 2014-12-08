@@ -245,6 +245,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
 
 <section>
     <t1>concept #1 - the check</t1> <!-- note that assert has changed to check, whatever -->
+    <div style="width: 50%; float: left;">
         <pre>   GET /check/trades/rejected/@count
    GET /check/trades/rejected/0</pre>
 
@@ -260,6 +261,21 @@ BOS,clearing,uat,http://localhost:4253/clearing
            "trade 1234 is rejected",
            "trade 5678 is rejected"
         ]}</pre>
+    </div>
+    <div style="width: 50%; float: right;">
+    <pre>
+trait Check {
+  def run: CheckResponse
+  def success = CheckResponse(Nil)
+  def failure(failures: List[String]) =
+     CheckResponse(failures)
+}
+
+case class CheckResponse(
+  failures: List[String]
+)</pre>
+    </div>
+
 </section>
 
 <section>
