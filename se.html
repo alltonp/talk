@@ -246,21 +246,24 @@ BOS,clearing,uat,http://localhost:4253/clearing
 <section>
     <t1>concept #1 - the check</t1> <!-- note that assert has changed to check, whatever -->
     <div style="width: 50%; float: left;">
-        <pre>   GET /check/trades/rejected/@count
-   GET /check/trades/rejected/0</pre>
+        <pre>
+GET /check/trades/rejected/@count
+GET /check/trades/rejected/0</pre>
 
     <br/>
     <t2>Success</t2>
-    <pre>   =>   {"failures":[]}</pre> <!-- the empty list -->
+    <pre>
+=>  {"failures":[]}</pre> <!-- the empty list -->
 
     <br/>
     <t2>Failure</t2>
     <!-- need to add a better failure message -->
-        <pre>   =>   {"failures":[
-           "2 trades rejected",
-           "trade 1234 is rejected",
-           "trade 5678 is rejected"
-        ]}</pre>
+        <pre>
+=>  {"failures":[
+      "2 trades rejected",
+      "trade 1234 is rejected",
+      "trade 5678 is rejected"
+    ]}</pre>
     </div>
     <div style="width: 50%; float: right;">
     <pre>
@@ -272,8 +275,7 @@ trait Check {
 }
 
 case class CheckResponse(
-  failures: List[String]
-)</pre>
+  failures: List[String])</pre>
     </div>
 
 </section>
@@ -295,13 +297,14 @@ case class CheckResponse(
 
 <section>
     <t1>Continuous checking - reprobate</t1>
+    <t2>stop the line on a red box</t2>
     <!-- thousands of times per day -->
-    <br/>
-    <iframe width="90%" height="80%" frameborder="0" src="http://localhost:8473/"></iframe>
+    <p></p>
+    <iframe width="90%" height="60%" frameborder="0" src="http://localhost:8473/"></iframe>
 
     <ul>
         <!-- job done -->
-        <li>... useful building block ...</li> <!-- useful in its own right, but we can do more -->
+        <li>useful building block ...</li> <!-- useful in its own right, but we can do more -->
     </ul>
 </section>
 
@@ -358,7 +361,7 @@ POST /action/create/trade
     <t2>Success</t2>
     <pre>
 =>  {"failures":[], "returnValue": "12345"}
-     //optional</pre>
+                    //optional</pre>
 
     <br/>
     <t2>Failure</t2>
@@ -382,7 +385,7 @@ case class ActionResponse(
   returnValue: Option[String])
 
 case class In(name: String,
-  value: Option[String],
+  value: String,
   validValues: List[String] = Nil)
     </pre>
 
@@ -420,7 +423,6 @@ case class In(name: String,
 
 <section>
     <t1>Hipster - a new trade must be</t1>
-    <br/>
     <t2>booked, priced, accepted and cleared</t2>
     <br/>
     <br/>
@@ -431,7 +433,8 @@ case class In(name: String,
    check trade <b>cleared</b> in:clearing => <b>@id</b></pre>
 
     <ul>
-        <li>engine converts to a actions and checks</li>
+        <li>engine converts hipster into actions and checks</li>
+        <li>executes it against a given environment</li>
     </ul>
 </section>
 
@@ -444,15 +447,15 @@ case class In(name: String,
 
 <section>
     <t1>Two primitives go a long way</t1>
+    <t2>e.g. how do you ...</t2>
     <ul>
-        <li>how do you know it's quick enough?
-        <li>how do you know what your capacity is?
-        <li>how do you test long running workflows (i.e. days to execute, events T+x)?
-        <li>how do you break up a monolithic app into microservices?
-        <li>how do you test services you don't own/have the source for?
-        <li>how do you generate test evidence for everything?
+        <li>test your platform is quick enough?
+        <li>know your capacity limits?
+        <li>test long running workflows (i.e. days to execute, events T+x)?
+        <li>break up a monolithic app into microservices?
+        <li>test services you don't own/have the source for?
+        <li>generate test evidence for everything?
     </ul>
-    <!-- with just two primitives, check and action you can answer all of the above -->
 </section>
 
 <section>
