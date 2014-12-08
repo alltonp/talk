@@ -152,6 +152,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
         <li>aka keeping it up, without touching it</li>
         <!-- <li>write-only security clearance</li> --> <!-- as CAS alluded - in the dark, write only access -->
         <!-- to protect against classes of problem-->
+        <li>alert dev team of problems before users find them</li>
         <li>business vs technical</li>
         <!-- not disk, memory etc - that's already monitored -->
         <!-- so what are we interested in? business problems .... -->
@@ -290,7 +291,6 @@ BOS,clearing,uat,http://localhost:4253/clearing
 
 <section>
     <t1>Where's my $#!*ing trade?</t1> <!-- flipping -->
-    <br/>
     <p>@id = 12345</t2></p>
     <p><t2>http://booking/check/trade/booked/</t2>@id</p>
     <p><t2>http://pricing/check/trade/priced/</t2>@id</p>
@@ -306,8 +306,8 @@ BOS,clearing,uat,http://localhost:4253/clearing
     <ul>
         <li>I don't want a faster scala compiler</li> <!-- it keeps you honest, it's a good alarm bell -->
         <li>clean compile > 1 min rule</li> <!-- codebase is too big -->
-        <li>small codes bases are good</li> <!-- compile quickly, easy to replace/remove -->
-        <li>... but</li>
+        <li>results in lots of small services</li> <!-- compile quickly, easy to replace/remove -->
+        <li>which is great, but a new problem emerges ...</li>
     </ul>
 </section>
 
@@ -349,7 +349,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
 <section>
     <t1>Bringing it all together</t1>
 
-    <t2><p>primitives (checks + actions)</p><p>+ script + runner </p>= test anything</t2>
+    <t2><p>primitives (checks + actions)</p><p>+ script/dsl </p><p>+ runner </p>= test anything</t2>
     <!--
         bring it altogether
         its just a case of assembling tests out of endpoints in a script
@@ -360,15 +360,16 @@ BOS,clearing,uat,http://localhost:4253/clearing
 </section>
 
 <section>
-    <t1>Shoreditch</t1> <!-- this is more than just an approach, there is a reference implementation -->
+    <t1>What is shoreditch?</t1> <!-- this is more than just an approach, there is a reference implementation -->
 
     <ul>
         <li>implementation in scala, using json and akka</li>
+        <li>engine for executing checks and actions</li> <!-- describes actions and checks -->
         <li>'hipster' scripting language</li> <!-- describes actions and checks -->
-        <li>multiple runners</li> <!-- gui, command line, api -->
-        <li>open source</li>
-        <li>doesnt have any documentation right now</li> <!-- and the code is hideous -->
-        <li>future: UI for test creation/refactoring</li>
+        <li>multiple runners: API, GUI, CLI</li> <!-- gui, command line, api -->
+        <li>open source, rather lacks documentation right now</li> <!-- and the code is hideous -->
+        <li>checks and actions are discoverable ...</li>
+        <li>in progress: GUI for test authoring/refactoring</li>
     </ul>
 </section>
 
@@ -385,18 +386,21 @@ BOS,clearing,uat,http://localhost:4253/clearing
    check trade <b>priced</b> in:pricing => <b>@id</b>
    check trade <b>accepted</b> in:trading => <b>@id</b>
    check trade <b>cleared</b> in:clearing => <b>@id</b></pre>
+
+    <ul>
+        <li>engine converts to a actions and checks</li>
+    </ul>
 </section>
 
 <!-- need to explain what this maps to ... -->
 
 <section>
     <t1>Shoreditch gui runner</t1>
-    <!-- need to make the text on this bigger -->
     <iframe width="90%" height="80%" frameborder="0" src="http://localhost:4253/"></iframe>
 </section>
 
 <section>
-    <t1>A few more things ...</t1>
+    <t1>Two primitives go a long way</t1>
     <ul>
         <li>how do you know it's quick enough?
         <li>how do you know what your capacity is?
