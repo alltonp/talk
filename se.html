@@ -28,19 +28,23 @@ skinparam sequence {
 }
 
 participant booking
-participant trading
 participant pricing
+participant trading
+participant risk
 participant clearing
 participant reporting
 
-trading<->pricing: integration
+booking<->pricing: integration
 |||
-trading<->clearing: wide integration
+trading<->risk: integration
+|||
+booking<->risk: wide integration
 |||
 booking<->reporting: full end-to-end, T+1
 
 hide footbox
-@enduml-->
+@enduml
+-->
 
 <!-- probate
 http://localhost:8473,/demo/failure,PROD,Unable To Price Trade,,Email Support,3
@@ -337,11 +341,15 @@ case class CheckResponse(
     -->
 
     <t1>Is it safe to release?</t1>
+    <t2>all unit and acceptance tests for each component pass</t2>
+
+    <ul>
+        <li>what about integration testing?</li> <!-- using similar style -->
+    </ul>
+
     <!-- every app/service was well tested, but the more services we added, more we realised there was a gap,
      because not tested the whole thing -->
-    <br/>
-    <br/>
-    <img src="http://www.plantuml.com:80/plantuml/png/TL3BJiCm43ndls8bZX2fl2I84591wga7fF83Zhq9LbslsJegZ_3lk96XIYXpyUxix8orsxNrGOdQu9PUE_AQy1EAkGZl7jcnuCdLnKsj5M36C5gmZolxGNWvWs9f6rfQJmyiXYHltGu0A9wKHAjjK3xkjuwRJaIh-Eu8QtRcNyKGVZso7-NF1epdIgzRuSwRh5aCW2-0S52bM4utQKTS56McN91KJJZjICcK50gSkiH2zhuhxtDLeTAQGbJfyD3tFUIafCZ-5LeVgHKLBVk9v2Ukmfqrz4TuIFlzGeLDvnoIDsNaCZrd-7nw3W0lUuE6ETRyzWq0"/>
+    <img src="http://www.plantuml.com:80/plantuml/png/VL3BIiGm55ttVaN0fHR65-WWWWgpceKm_a2QtDRGc1jlKyP7_NVJ61dQ6JsR9ES9wLhZl6Jv8ZfyxT4f59zGt37Jze4iiJYwEBkgb0IHaQGLkR0n7oZE5r2iJOrhu_2UM2Fdr7K2GF4eEHXbl7HXJ1qkdPasuTsYgCZgFnrf_79IFzbV94nrgTg6gNSwUrO9y0NWTwuuI_5FcWddETvcN62fvnoRhfqGogBaFHTwYg_8GXwxAM_pn58O5x1X6Gmv68O1yawqZEtx-gxYHzyQZV-PViUNekwj5UXq6QYCnubuEZu5U1xpDL6ewEqR"/>
 
     <ul>
         <li>... what if we could also change the system state ...</li> <!-- using similar style -->
@@ -395,7 +403,7 @@ case class In(name: String,
 <section>
     <t1>Bringing it all together</t1>
 
-    <t2><p>primitives (checks + actions)</p><p>+ script/dsl </p><p>+ runner </p>= test anything</t2>
+    <t2><p>primitives (checks + actions)</p><p>+ script/dsl </p><p>+ runner </p></t2>= test anything
     <!--
         bring it altogether
         its just a case of assembling tests out of endpoints in a script
