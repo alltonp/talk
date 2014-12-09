@@ -147,7 +147,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
     <br/>
     <br/>
     <p>solving three problems<p>
-    <p>using two concepts and a little scala/json<p>
+    <p>using two simple concepts and a little scala/json<p>
 </section>
 
 <section>
@@ -156,7 +156,8 @@ BOS,clearing,uat,http://localhost:4253/clearing
         <li>aka keeping it up, without touching it</li>
         <!-- <li>write-only security clearance</li> --> <!-- as CAS alluded - in the dark, write only access -->
         <!-- to protect against classes of problem-->
-        <li>alert dev team of problems before users find them</li>
+        <li>proactively find and fix issues</li>
+        <li>before users/1st line support find out</li>
         <li>business vs technical</li>
         <!-- not disk, memory etc - that's already monitored -->
         <!-- so what are we interested in? business problems .... -->
@@ -181,10 +182,11 @@ BOS,clearing,uat,http://localhost:4253/clearing
     <p><t2>no trades rejected</t2></p>
     <p><t2>all trades cleared</t2></p>
     <p><t2>reports valid today</t2></p>
-    <br/>
+    <p></p>
 
     <ul>
-        <li>alarm bell - already tested???</li>
+        <li>alarm bell</li>
+        <li>already tested???</li>
         <!-- invariants of the system -->
         <!-- obviously every project has extensive suite of acceptance tests -->
         <!-- what does it mean 'all trades processed' -->
@@ -206,8 +208,8 @@ BOS,clearing,uat,http://localhost:4253/clearing
     <ul>
         <li>why only in used tests?
         <li>why only executed during dev and CI?
-        <li>why not put them in production code? <!-- are we ashamed of them? -->
         <li>why not run them all the time?
+        <li>why not put them in production code? <!-- are we ashamed of them? -->
     </ul>
     <!--
         I want them running all the time, 1000's times per day
@@ -243,7 +245,7 @@ BOS,clearing,uat,http://localhost:4253/clearing
     <p><t2>assert</t2>/<t2>reports</t2>/<t2>valid</t2>/<t2>today</t2></p>
     <p><br/></p>
     <ul>
-        <li>... via a REST-like (tm) interface</li>
+        <li>... using REST-like (tm) endpoints</li>
     </ul>
 </section>
 
@@ -292,23 +294,24 @@ case class CheckResponse(
     <p>http://trading/<t2>check/no/trades/rejected</t2></p>
     <p>http://clearing/<t2>check/all/trades/cleared</t2></p>
     <p>http://reporting/<t2>check/reports/valid/today</t2></p>
-    <p><br/></p>
+    <br/>
 
     <ul>
-        <li>... now we just need to run them ...</li>
+        <li>each component exposes its endpoints</li>
+        <li>now we just need to run them ...</li>
     </ul>
 </section>
 
 <section>
     <t1>Continuous checking - reprobate</t1>
-    <t2>stop the line on a red box</t2>
+    <t2>team rule - stop the line on a red box</t2>
     <!-- thousands of times per day -->
     <p></p>
     <iframe width="90%" height="60%" frameborder="0" src="http://localhost:8473/"></iframe>
 
     <ul>
         <!-- job done -->
-        <li>useful building block ...</li> <!-- useful in its own right, but we can do more -->
+        <li>first problem solved and we have a useful building block ...</li> <!-- useful in its own right, but we can do more -->
     </ul>
 </section>
 
@@ -320,15 +323,20 @@ case class CheckResponse(
     <p><t2>http://trading/check/trade/accepted/</t2>@id</p>
     <p><t2>http://clearing/check/trade/cleared/</t2>@id</p>
     <p><t2>http://reporting/check/reports/include/</t2>@id</t2></p>
-    <p><br/></p>
+    <p></p>
+    <ul>
+        <!-- job done -->
+        <li>two down, using only one concept ... next</li>
+    </ul>
 </section>
 
 <section>
     <t1>Microservices microservices microservices</t1>
     <br/>
     <ul>
+        <li>we love them</li>
         <li>I don't want a faster scala compiler</li> <!-- it keeps you honest, it's a good alarm bell -->
-        <li>clean compile > 1 min rule</li> <!-- codebase is too big -->
+        <li>alarm bell: clean compile > 1 min</li> <!-- codebase is too big -->
         <li>results in lots of small services</li> <!-- compile quickly, easy to replace/remove -->
         <li>which is great, but a new problem emerges ...</li>
     </ul>
@@ -417,12 +425,12 @@ case class In(name: String,
     <t1>What is shoreditch?</t1> <!-- this is more than just an approach, there is a reference implementation -->
 
     <ul>
-        <li>implementation in scala, using json and akka</li>
+        <li>implementation in scala, using json and akka, ui's in liftweb</li>
+        <li>'hipster' scripting language describes workflow</li> <!-- describes actions and checks -->
         <li>engine for executing checks and actions</li> <!-- describes actions and checks -->
-        <li>'hipster' scripting language</li> <!-- describes actions and checks -->
         <li>multiple runners: API, GUI, CLI</li> <!-- gui, command line, api -->
         <li>open source, rather lacks documentation right now</li> <!-- and the code is hideous -->
-        <li>checks and actions are discoverable ...</li>
+        <li>teaser: checks and actions are discoverable ...</li>
         <li>in progress: GUI for test authoring/refactoring</li>
     </ul>
 </section>
@@ -443,6 +451,7 @@ case class In(name: String,
     <ul>
         <li>engine converts hipster into actions and checks</li>
         <li>executes it against a given environment</li>
+        <li>fails fast if any components does not offer action/check x </li>
     </ul>
 </section>
 
